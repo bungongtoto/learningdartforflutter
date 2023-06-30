@@ -4,20 +4,25 @@ void main() {
   runApp(const MyApp());
 }
 
-class Person {
-  void run() {
-    print("running");
-  }
+class Cat {
+  final String name;
+  Cat(this.name);
 
-  void breathe() {
-    print("breathing");
-  }
+  @override
+  bool operator ==(covariant Cat other) => other.name == name;
+
+  @override
+  int get hashCode => name.hashCode;
 }
 
 void test() {
-  final person = Person();
-  person.run();
-  person.breathe();
+  final cat1 = Cat("Foo");
+  final cat2 = Cat("Foo");
+  if (cat1 == cat2) {
+    print("they are equal");
+  } else {
+    print('They are not equal');
+  }
 }
 
 class MyApp extends StatelessWidget {
